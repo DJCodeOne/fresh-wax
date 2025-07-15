@@ -1,0 +1,24 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "email-handler",
+	"main": "src/index.js",
+	"account_id": "5f6ae0dd5c6f5c83e2d1aa0fa8928ff4",
+	"compatibility_date": "2025-07-15",
+	"workers_dev": false,
+	"routes": [
+		{
+			"pattern": "email-handler.freshwax.co.uk/*",
+			"zone_name": "freshwax.co.uk"
+		}
+	],
+	"observability": {
+		"enabled": true
+	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "fresh-wax-newsletter",
+			"database_id": "f4071a6e-7580-4345-b182-8d01cc57d22b"
+		}
+	]
+}

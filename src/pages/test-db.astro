@@ -1,0 +1,70 @@
+---
+// src/pages/test-db.astro
+import '../styles/global.css';
+
+let tables = [];
+let error = null;
+let envInfo = {};
+
+try {
+  // Check different ways to access the database
+  if (Astro.locals.runtime?.env?.DB) {
+    const { DB } = Astro.locals.runtime.env;
+    const result = await DB.prepare("SELECT name FROM sqlite_master WHERE type='table'").all();
+    tables = result.results;
+    envInfo.method = 'runtime.env.DB';
+  } else if (Astro.locals.runtime?.env?.['fresh-wax-newsletter']) {
+    const DB = Astro.locals.runtime.env['fresh-wax-newsletter'];
+    const result = await DB.prepare("SELECT name FROM sqlite_master WHERE type='table'").all();
+    tables = result.results;
+    envInfo.method = 'runtime.env[fresh-wax-newsletter]';
+  } else if (Astro.locals.DB) {
+    const DB = Astro.locals.DB;
+    const result = await DB.prepare("SELECT name FROM sqlite_master WHERE type='table'").all();
+    tables = result.results;
+    envInfo.method = 'locals.DB';
+  } else {
+    envInfo.runtime = !!Astro.locals.runtime;
+    envInfo.env = !!Astro.locals.runtime?.env;
+    envInfo.envKeys = Astro.locals.runtime?.env ? Object.keys(Astro.locals.runtime.env) : [];
+    envInfo.localsKeys = Object.keys(Astro.locals);
+    error = 'No database connection found';
+  }
+} catch (err) {
+  error = err.message;
+  envInfo.errorDetails = err.stack;
+}
+---
+
+<html>
+  <head>
+    <title>Database Test</title>
+  </head>
+  <body class="p-8 bg-gray-100">
+    <h1 class="text-3xl font-bold mb-4 text-blue-600">Database Test</h1>
+    
+    <div class="bg-white p-6 rounded-lg shadow mb-4">
+      <h2 class="text-xl font-semibold mb-2">Environment Debug Info:</h2>
+      <pre class="bg-gray-100 p-2 rounded text-sm overflow-auto">{JSON.stringify(envInfo, null, 2)}</pre>
+    </div>
+    
+    {error ? (
+      <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+        <strong>Error:</strong> {error}
+      </div>
+    ) : (
+      <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+        <strong>Success:</strong> Connected using {envInfo.method}
+      </div>
+    )}
+    
+    <div class="bg-white p-6 rounded-lg shadow">
+      <p class="mb-2 text-lg">Tables found: <span class="font-semibold">{tables.length}</span></p>
+      <ul class="list-disc pl-6">
+        {tables.map(table => (
+          <li key={table.name} class="text-gray-700">{table.name}</li>
+        ))}
+      </ul>
+    </div>
+  </body>
+</html>
