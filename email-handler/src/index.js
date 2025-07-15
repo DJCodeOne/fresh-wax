@@ -225,140 +225,148 @@ async function handleNewsletterSignup(formData, env) {
         subject: "🎵 Welcome to Fresh Wax!",
         html: `
           <!DOCTYPE html>
-          <html lang="en">
-          <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Welcome to Fresh Wax</title>
-            <style>
-              * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-              }
-              
-              body {
-                font-family: 'Arial', sans-serif;
-                background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-                color: #ffffff;
-                line-height: 1.6;
-                padding: 20px 0;
-              }
-              
-              .container {
-                max-width: 600px;
-                margin: 0 auto;
-                background: linear-gradient(135deg, #111111 0%, #1f1f1f 100%);
-                border-radius: 15px;
-                overflow: hidden;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-              }
-              
-              .header {
-                background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ff6b35 100%);
-                padding: 30px 20px;
-                text-align: center;
-                position: relative;
-                overflow: hidden;
-              }
-              
-              .logo {
-                font-size: 32px;
-                font-weight: bold;
-                color: #ffffff;
-                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-                position: relative;
-                z-index: 1;
-                margin-bottom: 5px;
-              }
-              
-              .tagline {
-                font-size: 14px;
-                color: #ffffff;
-                opacity: 0.9;
-                position: relative;
-                z-index: 1;
-                text-transform: uppercase;
-                letter-spacing: 1px;
-              }
-              
-              .content {
-                padding: 40px 30px;
-              }
-              
-              .greeting {
-                font-size: 24px;
-                color: #ff6b35;
-                margin-bottom: 20px;
-                font-weight: bold;
-              }
-              
-              .intro {
-                font-size: 16px;
-                color: #cccccc;
-                margin-bottom: 30px;
-              }
-              
-              .features {
-                background: rgba(255, 107, 53, 0.1);
-                border-radius: 10px;
-                padding: 25px;
-                margin: 30px 0;
-                border-left: 4px solid #ff6b35;
-              }
-              
-              .features h3 {
-                color: #ff6b35;
-                margin-bottom: 20px;
-                font-size: 20px;
-                text-align: center;
-              }
-              
-              .footer {
-                background: #0a0a0a;
-                padding: 25px;
-                text-align: center;
-                border-top: 2px solid #ff6b35;
-              }
-              
-              .footer-logo {
-                font-size: 20px;
-                font-weight: bold;
-                color: #ff6b35;
-                margin-bottom: 10px;
-              }
-            </style>
-          </head>
-          <body>
-            <div class="container">
-              <div class="header">
-                <div class="logo">🎵 FRESH WAX</div>
-                <div class="tagline">Vinyl • Digital • Underground</div>
-              </div>
-              
-              <div class="content">
-                <div class="greeting">Welcome to the Family!</div>
-                
-                <div class="intro">
-                  A new online store supplying all the latest releases on vinyl and digital from the labels that matter! You're now part of the Fresh Wax collective where the beats never stop and the basslines hit different.
-                </div>
-                
-                <div class="features">
-                  <h3>What's Coming Your Way</h3>
-                  <p>🔥 First access to new arrivals and exclusive drops</p>
-                  <p>💿 Limited edition vinyl releases</p>
-                  <p>🎧 Underground events and live streaming</p>
-                  <p>📦 Archive Crates with rare gems</p>
-                </div>
-              </div>
-              
-              <div class="footer">
-                <div class="footer-logo">FRESH WAX</div>
-                <p>freshwax.co.uk</p>
-              </div>
-            </div>
-          </body>
-          </html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Welcome to Fresh Wax</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      color: #ffffff;
+      line-height: 1.6;
+      padding: 20px 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, #111111 0%, #1f1f1f 100%);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .header {
+      background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ff6b35 100%);
+      padding: 30px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo {
+      font-size: 32px;
+      font-weight: bold;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      position: relative;
+      z-index: 1;
+      margin-bottom: 5px;
+    }
+
+    .tagline {
+      font-size: 14px;
+      color: #ffffff;
+      opacity: 0.9;
+      position: relative;
+      z-index: 1;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .content {
+      padding: 40px 30px;
+    }
+
+    .greeting {
+      font-size: 24px;
+      color: #ff6b35;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .intro {
+      font-size: 16px;
+      color: #cccccc;
+      margin-bottom: 30px;
+    }
+
+    .features {
+      background: rgba(255, 107, 53, 0.15); /* stronger bg */
+      border-radius: 10px;
+      padding: 25px;
+      margin: 30px 0;
+      border-left: 4px solid #ff6b35;
+      color: #fff; /* white text for better contrast */
+    }
+
+    .features h3 {
+      color: #ff6b35;
+      margin-bottom: 20px;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    .features p {
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .footer {
+      background: #0a0a0a;
+      padding: 25px;
+      text-align: center;
+      border-top: 2px solid #ff6b35;
+    }
+
+    .footer-logo {
+      font-size: 20px;
+      font-weight: bold;
+      color: #ff6b35;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">🎵 FRESH WAX</div>
+      <div class="tagline">Vinyl • Digital • Underground</div>
+    </div>
+
+    <div class="content">
+      <div class="greeting">Welcome to the Family!</div>
+
+      <div class="intro">
+        A new online store supplying all the latest releases on vinyl and digital from the labels that matter! You're now part of the Fresh Wax collective where the beats never stop and the basslines hit different.
+      </div>
+
+      <div class="features">
+        <h3>What's Coming Your Way</h3>
+        <p>🔥 First access to new arrivals and exclusive drops</p>
+        <p>💿 Limited edition vinyl releases</p>
+        <p>🎧 Underground events and live streaming</p>
+        <p>📦 Archive Crates with rare gems</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="footer-logo">FRESH WAX</div>
+      <p>freshwax.co.uk</p>
+    </div>
+  </div>
+</body>
+</html>
+
         `
       })
     });
